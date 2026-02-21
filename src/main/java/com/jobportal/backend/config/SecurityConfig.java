@@ -24,11 +24,10 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf->csrf.disable())
-                .authorizeHttpRequests(request->request.requestMatchers("/api/users","api/users/welcome",
+                .authorizeHttpRequests(request->request.requestMatchers("/h2-console/**",
                         "/v3/api-docs/**",
                         "/swagger-ui/**",
-                        "/swagger-ui.html",
-                        "/h2-console/**").permitAll().anyRequest().authenticated())
+                        "/swagger-ui.html").permitAll().anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults());
 
           return http.build();
