@@ -3,6 +3,7 @@ package com.jobportal.backend.service;
 
 import com.jobportal.backend.dto.UserCreateRequest;
 import com.jobportal.backend.dto.UserResponse;
+import com.jobportal.backend.entity.Role;
 import com.jobportal.backend.entity.User;
 import com.jobportal.backend.exception.DuplicateResourceException;
 import com.jobportal.backend.exception.ResourceNotFoundException;
@@ -32,6 +33,7 @@ public class UserService {
         user.setName(request.getName());
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setRole(Role.ROLE_USER);
 
         User savedUser = userRepository.save(user);
 
